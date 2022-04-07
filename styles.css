@@ -1,0 +1,287 @@
+/* ----- Reset ----- */
+
+/* Box sizing rules */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Remove default margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure {
+    margin: 0;
+}
+
+/* Set core body defaults */ 
+
+body {
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+}
+
+/* Remove list styles on ul, ol elements with a list role, 
+which suggests default styling will be removed */ 
+ul[role='list'],
+ol[role='list'] {
+    list-style: none;
+}
+
+/* Set core root defaults */ 
+
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+/* Make images easier to work with */ 
+
+img,
+picture {
+    max-width: 100%;
+    display: block;
+}
+
+/* Remove all animations, transitions and smooth scroll for 
+people that prefer not to see them */ 
+
+@media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+    *,
+    *::after,
+    *::before {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+/* ----- Reset done ------ */
+/* ------ Colors -------*/ 
+
+:root {
+    /* ---- Backgrounds ---- */
+    --main-bg: hsl(222, 26%, 31%);
+    --key-bg: hsl(30, 25%, 89%);
+    --key-shadow: hsl(28, 16%, 65%);
+    --keypad-bg: hsl(223, 31%, 20%);
+    --screen-bg: hsl(224, 36%, 15%);
+    --del-reset-bg: hsl(225, 21%, 49%);
+    --del-reset-bg-shadow: hsl(224, 28%, 35%);
+    --equal-bg: hsl(6, 63%, 50%);
+    --equal-shadow: hsl(6, 70%, 34%);
+    /* ------ Text Colors ----- */
+    --main-color: hsl(60, 10%, 19%);
+    /* ------ Key Fonts ----- */
+    --key-font-size: 2rem;
+    --key-font-family: 'Spartan', sans-serif;
+    --key-font-weight: 700;
+}
+
+/* Typography */
+
+body {
+    font-family: var(--key-font-family);
+    font-size: var(--key-font-size);
+    font-weight: var(--key-font-weight);
+    background-color: var(--main-bg);
+    color: #fff;
+}
+h1 {
+    font-size: var(--key-font-size);
+    margin: 0.5em;
+}
+
+/* Layout */
+
+
+.screen {
+    background-color: var(--screen-bg);
+    text-align: right;
+    margin: 1em auto;
+    padding: .5em 1em;
+    border-radius: 15px;
+    width: 90%;
+    height: 100px;
+}
+button {
+    font-family: var(--key-font-family);
+    font-size: var(--key-font-size);
+    font-weight: var(--key-font-weight);
+    border: none;
+}
+label {
+    font-size: 1rem;
+    padding: 5px;
+}
+
+input[type='radio'] {
+    display: none;
+}
+
+header {
+    position: relative;
+    margin: 0 auto;
+    max-width: 355px;
+}
+
+input[type='radio']#dark-theme + label::before {
+    content: "";
+    width: 55px;
+    height: 20px;
+    background-color: var(--keypad-bg);
+    position: absolute;
+    top: 65%;
+    right: 14.5%;
+    border-radius: 15px;
+}
+
+input[type='radio']#dark-theme:checked + label::after {
+    content: "";
+    height: 13px;
+    width: 13px;
+    background-color: var(--equal-bg);
+    position: absolute;
+    top: 69%;
+    right: 24.8%;
+    border-radius: 100%;
+}
+
+
+input[type='radio']#light-theme:checked + label::after {
+    content: "";
+    height: 13px;
+    width: 13px;
+    background-color: var(--equal-bg);
+    position: absolute;
+    top: 69%;
+    right: 20.5%;
+    border-radius: 100%;
+}
+
+input[type='radio']#purple-theme:checked + label::after {
+    content: "";
+    height: 13px;
+    width: 13px;
+    background-color: var(--equal-bg);
+    position: absolute;
+    top: 69%;
+    right: 16%;
+    border-radius: 100%;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.keyboard {
+    background-color: var(--keypad-bg);
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 15px;
+    padding: 1em;
+}
+
+.key {
+    background-color: var(--key-bg);
+    color: var(--main-color);
+    font-size: 1.8rem;
+    padding: 0.3em;
+    border-bottom: 5px solid var(--key-shadow);
+    transform: translateY(default);
+    transition: transform ease-out;
+
+}
+
+.key:active, 
+.reset:active,
+.del:active,
+.equal:active {
+    transform: translateY(5px);
+    border-bottom: none;
+}
+
+button {
+    border-radius: 15px;
+}
+
+.reset,
+.del {
+    background-color: var(--del-reset-bg);
+    border-bottom: 5px solid var(--del-reset-bg-shadow);
+}
+
+.equal {
+    background-color: var(--equal-bg);
+    border-bottom: 5px solid var(--equal-shadow);
+}
+
+.container {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 2em);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 10px;
+    align-items: center;
+    place-content: center;
+}
+
+.reset,
+.del,
+.equal {
+    color: #fff;
+    font-size: 1.5rem;
+    height: 100%;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.reset {
+    grid-column: 1 / span 2
+}
+
+.equal {
+    grid-column : 3 / span 2;
+}
+
+.previous-text {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.small-text {
+    font-size: 1rem;
+    display: inline;
+    margin-left: 0.2em;
+}
+
+
+@media (min-width: 375px) {
+    .screen {
+        max-width: 355px;
+    }
+    .keyboard {
+        max-width: 360px;
+    }
+}
+
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }
